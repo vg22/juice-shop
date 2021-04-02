@@ -16,4 +16,13 @@ steps:
     displayName: 'install snyk'
   - script: |
       sudo snyk test
-    displayName: 'sudo snyk test'
+    displayName: 'snyk SCA'
+  - script: |
+      sudo snyk code test
+    displayName: 'snyk SAST'
+  - script: |
+      sudo snyk container test $(CONTAINER) --file=$(DOCKERFILE)
+    displayName: 'Snyk Container'
+  - script: |
+      sudo snyk iac test $(IAC_FILE)
+    displayName: 'Snyk Iac'
