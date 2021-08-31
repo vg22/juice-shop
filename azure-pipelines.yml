@@ -2,16 +2,11 @@ trigger:
   - master
 
 pool:
-  vmImage: 'Ubuntu-16.04'
+  vmImage: 'node:latest'
 
 steps:
   - script: |
-      npm install
-    displayName: 'npm install'
-  - script: |
       sudo npm install -g snyk
       sudo snyk auth $(SNYK_TOKEN)
-    displayName: 'install snyk'
-  - script: |
       sudo snyk code test --severity-threshold=high
     displayName: 'snyk SAST'
