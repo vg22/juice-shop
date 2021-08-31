@@ -2,7 +2,7 @@ trigger:
   - master
 
 pool:
-  vmImage: 'node:latest'
+  vmImage: 'ubuntu-latest'
 
 steps:
   - script: |
