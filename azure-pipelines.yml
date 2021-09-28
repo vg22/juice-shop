@@ -6,7 +6,18 @@ pool:
 
 steps:
   - script: |
-      sudo npm install -g snyk
-      sudo snyk auth $(SNYK_TOKEN)
-      sudo snyk code test --severity-threshold=high
+      sudo snyk test
+    displayName: 'snyk SCA'
+    continueOnError: true
+  - script: |
+      sudo snyk code test
     displayName: 'snyk SAST'
+    continueOnError: true
+  - script: |
+      sudo snyk container test $(CONTAINER) --file=$(DOCKERFILE)
+    displayName: 'Snyk Container'
+    continueOnError: true
+  - script: |
+      sudo snyk iac test $(IAC_FILE)
+    displayName: 'Snyk IaC'
+    continueOnError: true
