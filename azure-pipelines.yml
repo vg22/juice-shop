@@ -6,6 +6,10 @@ pool:
 
 steps:
   - script: |
+      sudo npm install -g snyk
+      sudo snyk auth $(SNYK_TOKEN)
+    displayName: 'snyk install'
+  - script: |
       sudo snyk test
     displayName: 'snyk SCA'
     continueOnError: true
