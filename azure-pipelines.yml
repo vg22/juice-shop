@@ -18,7 +18,7 @@ steps:
     displayName: 'snyk SAST'
     continueOnError: true
   - script: |
-      sudo snyk container test $(CONTAINER) --file=$(DOCKERFILE)
+      sudo snyk container test $(CONTAINER)
     displayName: 'Snyk Container'
     continueOnError: true
   - script: |
