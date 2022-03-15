@@ -57,6 +57,7 @@ config/*.yml
 !config/unsafe.yml
 !config/tutorial.yml
 !config/oss.yml
+.DS_store
 
 # security
 .dccache
